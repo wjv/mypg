@@ -1,8 +1,11 @@
 version: '2'
 services:
   server:
-    image: mypg
+    build: .
+    entrypoint: /docker-entrypoint.sh
     command: postgres
+    ports:
+      - "5432:5432"
     volumes:
       - ./data:/data
       - /mnt/solexa:/mnt/solexa
