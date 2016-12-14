@@ -3,6 +3,8 @@ services:
   server:
     build: .
     entrypoint: /docker-entrypoint.sh
+    environment:
+      - POSTGRES_PASSWORD=postgres
     command: postgres
     ports:
       - "5432:5432"

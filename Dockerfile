@@ -10,6 +10,7 @@ RUN set -x \
       git \
       gosu \
       curl \
+      libcurl4-openssl-dev \
       libreadline-dev \
       libssl-dev \
       locales \
@@ -23,7 +24,7 @@ RUN set -x \
 ENV LANG=en_US.utf8 \
     PG_MAJOR=9.6 \
     PG_VERSION=9.6.1 \
-#    LC_ALL=C \
+    PGHTTP_VERSION=1.1.2 \
     PGDATA=/data
 
 RUN mkdir /src \
@@ -36,6 +37,14 @@ RUN mkdir /src \
       --enable-thread-safety \
       --with-python \
       --prefix=/usr/local \
+    && make install \
+    && make install -C contrib/adminpack \
+    && make install -C contrib/pgcrypto
+
+RUN curl -sL \
+      https://github.com/pramsey/pgsql-http/archive/v${PGHTTP_VERSION}.tar.gz \
+      | tar xvzC /src \
+    && cd /src/pgsql-http-${PGHTTP_VERSION} \
     && make install
 
 COPY requirements.txt *.sh /
