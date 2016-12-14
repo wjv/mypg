@@ -1,0 +1,2 @@
+python-dateutil
+-e git+https://github.com/wjv/Multicorn@nocache#egg=Multicorn

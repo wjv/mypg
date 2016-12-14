@@ -1,0 +1,8 @@
+version: '2'
+services:
+  server:
+    image: mypg
+    command: postgres
+    volumes:
+      - ./data:/data
+      - /mnt/solexa:/mnt/solexa
