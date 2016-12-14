@@ -48,6 +48,7 @@ RUN curl -sL \
     && make install
 
 COPY requirements.txt *.sh /
+COPY initdb.d /initdb.d/
 
 RUN pip install --upgrade --no-cache-dir pip setuptools wheel \
     && pip install --no-cache-dir -r /requirements.txt
@@ -61,7 +62,7 @@ RUN apt-get purge -y --auto-remove ca-certificates \
       git \
     && rm -rf /src /requirements.txt /root/.bashrc
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 5432
 

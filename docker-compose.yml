@@ -2,7 +2,7 @@ version: '2'
 services:
   server:
     build: .
-    entrypoint: /docker-entrypoint.sh
+    entrypoint: /entrypoint.sh
     environment:
       - POSTGRES_PASSWORD=postgres
     command: postgres
