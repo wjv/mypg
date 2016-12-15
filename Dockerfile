@@ -53,6 +53,10 @@ COPY initdb.d /initdb.d/
 RUN pip install --upgrade --no-cache-dir pip setuptools wheel \
     && pip install --no-cache-dir -r /requirements.txt
 
+RUN git clone https://github.com/wjv/Multicorn.git -b nocache /src/Multicorn \
+    && cd /src/Multicorn \
+    && make install
+
 RUN groupadd -r postgres --gid=999 && useradd -r -g postgres --uid=999 postgres
 
 RUN apt-get purge -y --auto-remove ca-certificates \
