@@ -59,12 +59,14 @@ RUN git clone https://github.com/wjv/Multicorn.git -b nocache /src/Multicorn \
 
 RUN groupadd -r postgres --gid=999 && useradd -r -g postgres --uid=999 postgres
 
+RUN sed -i -e '/^xterm/{' -e 'n; s/^/#/' -e '}' /root/.bashrc
+
 RUN apt-get purge -y --auto-remove ca-certificates \
       build-essential \
       bzip2 \
       curl \
       git \
-    && rm -rf /src /requirements.txt /root/.bashrc
+    && rm -rf /src /requirements.txt
 
 ENTRYPOINT ["/entrypoint.sh"]
 
