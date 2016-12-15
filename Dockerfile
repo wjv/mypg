@@ -13,6 +13,7 @@ RUN set -x \
       libcurl4-openssl-dev \
       libreadline-dev \
       libssl-dev \
+      libxml2-dev \
       locales \
       python \
       python-dev \
@@ -34,6 +35,7 @@ RUN mkdir /src \
     && cd /src/postgresql-${PG_VERSION} \
     && ./configure \
       --with-openssl \
+      --with-libxml \
       --enable-thread-safety \
       --with-python \
       --prefix=/usr/local \
