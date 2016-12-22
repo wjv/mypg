@@ -10,4 +10,5 @@ services:
       - "5432:5432"
     volumes:
       - ./data:/data
+      - ./initdb.d:/initdb.d:ro
       - /net/bioaps01/srv/nfs4/solexa:/mnt/solexa:ro

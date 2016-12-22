@@ -50,7 +50,6 @@ RUN curl -sL \
     && make install
 
 COPY requirements.txt *.sh /
-COPY initdb.d /initdb.d/
 
 RUN pip install --upgrade --no-cache-dir pip setuptools wheel \
     && pip install --no-cache-dir -r /requirements.txt
