@@ -5,10 +5,12 @@ services:
     entrypoint: /entrypoint.sh
     environment:
       - POSTGRES_PASSWORD=postgres
-    command: postgres
+    command: postgres -c config_file='/conf/postgresql.conf'
     ports:
       - "5432:5432"
     volumes:
       - ./data:/data
+      - ./conf:/conf:ro
+      - ./conf.d:/conf.d:ro
       - ./initdb.d:/initdb.d:ro
       - /net/bioaps01/srv/nfs4/solexa:/mnt/solexa:ro
