@@ -1,4 +1,5 @@
-version: '2'
+version: '3'
+
 services:
   server:
     build: .
@@ -15,4 +16,11 @@ services:
       - ./conf:/conf:ro
       - ./conf.d:/conf.d:ro
       - ./initdb.d:/initdb.d:ro
-      - /net/bioaps01/srv/nfs4/solexa:/mnt/solexa:ro
+      - solexa:/mnt/solexa:ro
+
+volumes:
+  solexa:
+    driver: local
+    driver_opts:
+     {type: 'nfs', device: ':/srv/nfs4/solexa', o: 'addr=bioaps01,ro,resvport'}
+
