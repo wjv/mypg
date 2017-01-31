@@ -7,10 +7,10 @@ RUN set -x \
     && apt-get install -y --no-install-recommends ca-certificates \
       build-essential \
       bzip2 \
+      curl libcurl4-openssl-dev \
       git \
       gosu \
-      curl \
-      libcurl4-openssl-dev \
+      libldap-dev \
       libreadline-dev \
       libssl-dev \
       libxml2-dev \
@@ -38,6 +38,7 @@ RUN mkdir /src \
       --with-libxml \
       --enable-thread-safety \
       --with-python \
+      --with-ldap \
       --prefix=/usr/local \
     && make install \
     && make install -C contrib/adminpack \
@@ -49,7 +50,7 @@ RUN curl -sL \
     && cd /src/pgsql-http-${PGHTTP_VERSION} \
     && make install
 
-COPY requirements.txt *.sh /
+COPY requirements.txt entrypoint.sh /
 
 RUN pip install --upgrade --no-cache-dir pip setuptools wheel \
     && pip install --no-cache-dir -r /requirements.txt
