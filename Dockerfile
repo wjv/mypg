@@ -15,6 +15,7 @@ RUN set -x \
       libssl-dev \
       libxml2-dev \
       locales \
+      openssl \
       python \
       python-dev \
       python-pip \
