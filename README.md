@@ -10,6 +10,7 @@ Compiled with support for:
 
 * libxml2
 * openssl
+* LDAP
 * PL/Python (Python 2.7)
 
 Included plugins:
