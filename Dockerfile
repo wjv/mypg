@@ -23,11 +23,11 @@ RUN set -x \
   && rm -rf /var/lib/apt/lists/* \
   && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
-ENV LANG=en_US.utf8 \
-    PG_MAJOR=9.6 \
-    PG_VERSION=9.6.2 \
-    PGHTTP_VERSION=1.1.2 \
-    PGDATA=/data
+ENV LANG="en_US.utf8" \
+    PG_MAJOR="9.6" \
+    PG_VERSION="9.6.2" \
+    PGHTTP_VERSION="1.1.2" \
+    PGDATA="/data"
 
 RUN mkdir /src \
     && curl -s \
