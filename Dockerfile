@@ -27,7 +27,9 @@ ENV LANG="en_US.utf8" \
     PG_MAJOR="9.6" \
     PG_VERSION="9.6.2" \
     PGHTTP_VERSION="1.1.2" \
-    PGDATA="/data"
+    PGDATA="/data" \
+    POSTGRES_USER="postgres" \
+    POSTGRES_GROUP="postgres"
 
 RUN mkdir /src \
     && curl -s \
@@ -60,7 +62,7 @@ RUN git clone https://github.com/wjv/Multicorn.git -b nocache /src/Multicorn \
     && cd /src/Multicorn \
     && make install
 
-RUN groupadd -r postgres --gid=999 && useradd -r -g postgres --uid=999 postgres
+RUN groupadd -r "${POSTGRES_GROUP}" --gid=999 && useradd -r -g "${POSTGRES_GROUP}" --uid=999 "${POSTGRES_USER}"
 
 RUN sed -i -e '/^xterm/{' -e 'n; s/^/#/' -e '}' /root/.bashrc
 
