@@ -12,7 +12,10 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./data:/data
+      - pgdata:/data
       - ./conf:/conf:ro
       - ./conf.d:/conf.d:ro
       - ./initdb.d:/initdb.d:ro
+
+volumes:
+  pgdata:
