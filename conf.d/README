@@ -1,4 +1,0 @@
-Postgres configuration files.
-
-Only non-hidden, non-directory files that end in .conf will be included.
-See section 19.1.5 of the Postgres (9.6) manual.

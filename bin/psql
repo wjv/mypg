@@ -1,5 +1,0 @@
-#!/bin/sh
-
-BINARY=`basename $0 | sed -e 's/\.sh$//'`
-
-docker-compose run --rm client ${BINARY} $@

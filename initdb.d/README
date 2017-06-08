@@ -1,2 +1,0 @@
-Files in this directory matching *.sh, *.sql or *.sql.gz will be executed when
-the database is initialised.

@@ -1,7 +1,0 @@
-version: '3'
-
-services:
-  server:
-    build: .
-    volumes:
-      - /net/bioaps01/srv/nfs4/solexa:/mnt/solexa:ro
