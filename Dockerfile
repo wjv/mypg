@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-MAINTAINER Johann Visagie, johann@visagie.za.net
+LABEL maintainer Johann Visagie, johann@visagie.za.net
 
 RUN set -x \
     && apt-get -y update \
@@ -66,15 +66,23 @@ RUN groupadd -r "${POSTGRES_GROUP}" --gid=999 && useradd -r -g "${POSTGRES_GROUP
 
 RUN sed -i -e '/^xterm/{' -e 'n; s/^/#/' -e '}' /root/.bashrc
 
-RUN apt-get purge -y --auto-remove ca-certificates \
-      build-essential \
-      bzip2 \
-      curl \
-      git \
-    && rm -rf /src /requirements.txt
+ARG MYPG_DEBUG
+
+RUN if [ -z "${MYPG_DEBUG}" ]; then \
+      apt-get purge -y --auto-remove \
+        ca-certificates \
+        build-essential \
+        bzip2 \
+        curl \
+        git \
+      && rm -rf /src /requirements.txt \
+    ;fi
 
 ENTRYPOINT ["/entrypoint.sh"]
 
+CMD ["postgres"]
+
 EXPOSE 5432
 
-CMD ["postgres"]
+HEALTHCHECK  --interval=5m --timeout=5s --retries=3 \
+    CMD gosu postgres pg_ctl -D /data status
