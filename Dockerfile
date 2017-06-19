@@ -69,8 +69,7 @@ RUN sed -i -e '/^xterm/{' -e 'n; s/^/#/' -e '}' /root/.bashrc
 ARG MYPG_DEBUG
 
 RUN if [ -z "${MYPG_DEBUG}" ]; then \
-      apt-get purge -y --auto-remove \
-        ca-certificates \
+      apt-get purge -y --auto-remove ca-certificates \
         build-essential \
         bzip2 \
         curl \
