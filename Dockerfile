@@ -16,9 +16,9 @@ RUN set -x \
       libxml2-dev \
       locales \
       openssl \
-      python \
-      python-dev \
-      python-pip \
+      python3 \
+      python3-dev \
+      python3-pip \
       zlib1g-dev \
   && rm -rf /var/lib/apt/lists/* \
   && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
@@ -29,7 +29,8 @@ ENV LANG="en_US.utf8" \
     PGHTTP_VERSION="1.1.2" \
     PGDATA="/data" \
     POSTGRES_USER="postgres" \
-    POSTGRES_GROUP="postgres"
+    POSTGRES_GROUP="postgres" \
+    PYTHON="/usr/bin/python3"
 
 RUN mkdir /src \
     && curl -s \
@@ -55,8 +56,8 @@ RUN curl -sL \
 
 COPY requirements.txt entrypoint.sh /
 
-RUN pip install --upgrade --no-cache-dir pip setuptools wheel \
-    && pip install --no-cache-dir -r /requirements.txt
+RUN pip3 install --upgrade --no-cache-dir pip setuptools wheel \
+    && pip3 install --no-cache-dir -r /requirements.txt
 
 RUN git clone https://github.com/wjv/Multicorn.git -b nocache /src/Multicorn \
     && cd /src/Multicorn \
