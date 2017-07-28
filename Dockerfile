@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-LABEL maintainer Johann Visagie, johann@visagie.za.net
+LABEL maintainer="Johann Visagie <johann@visagie.za.net>"
 
 RUN set -x \
     && apt-get -y update \
