@@ -14,7 +14,7 @@ Compiled with support for:
 * libxml2
 * openssl
 * LDAP
-* PL/Python (Python 2.7)
+* PL/Python (Python 3.5 in master; Python 2.7 in branch "python2")
 
 Included plugins:
 
