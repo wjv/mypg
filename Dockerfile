@@ -25,7 +25,7 @@ RUN set -x \
 
 ENV LANG="en_US.utf8" \
     PG_MAJOR="10.0" \
-    PG_VERSION="10beta4" \
+    PG_VERSION="10.0" \
     PGHTTP_VERSION="1.2.0" \
     PGDATA="/data" \
     POSTGRES_USER="postgres" \
