@@ -75,8 +75,8 @@ RUN if [ -z "${MYPG_DEBUG}" ]; then \
         bzip2 \
         curl \
         git \
-      && rm -rf /src /requirements.txt \
-    ;fi
+      && rm -rf /src /requirements.txt; \
+    fi
 
 ENTRYPOINT ["/entrypoint.sh"]
 
