@@ -24,8 +24,8 @@ RUN set -x \
   && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
 ENV LANG="en_US.utf8" \
-    PG_MAJOR="9.6" \
-    PG_VERSION="9.6.5" \
+    PG_MAJOR="10.0" \
+    PG_VERSION="10.0" \
     PGHTTP_VERSION="1.2.0" \
     PGDATA="/data" \
     POSTGRES_USER="postgres" \
@@ -75,8 +75,8 @@ RUN if [ -z "${MYPG_DEBUG}" ]; then \
         bzip2 \
         curl \
         git \
-      && rm -rf /src /requirements.txt \
-    ;fi
+      && rm -rf /src /requirements.txt; \
+    fi
 
 ENTRYPOINT ["/entrypoint.sh"]
 
