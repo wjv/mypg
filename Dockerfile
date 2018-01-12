@@ -20,13 +20,13 @@ RUN set -x \
       python3-dev \
       python3-pip \
       zlib1g-dev \
-  && rm -rf /var/lib/apt/lists/* \
-  && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+    && rm -rf /var/lib/apt/lists/* \
+    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
 ENV LANG="en_US.utf8" \
-    PG_MAJOR="10.0" \
-    PG_VERSION="10.0" \
-    PGHTTP_VERSION="1.2.0" \
+    PG_MAJOR="10" \
+    PG_VERSION="10.1" \
+    PGHTTP_VERSION="1.2.2" \
     PGDATA="/data" \
     POSTGRES_USER="postgres" \
     POSTGRES_GROUP="postgres" \
